@@ -48,4 +48,16 @@ public class ExercicioFisicoService {
 
         return mapper.toExercicoFisicoResponseDTO(salvo);
     }
+
+    public ExercicoFisicoResponseDTO aprovar(Long id) {
+
+        ExercicioFisico exercicioFisico = repository.findById(id).orElseThrow(() -> new RuntimeException("Exercício físico não encontrado"));
+
+        exercicioFisico.setAprovado(true);
+
+        ExercicioFisico exercicioSalvo =
+                repository.save(exercicioFisico);
+
+        return mapper.toExercicoFisicoResponseDTO(exercicioSalvo);
+    }
 }

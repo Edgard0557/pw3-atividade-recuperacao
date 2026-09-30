@@ -43,4 +43,14 @@ public class ExercicioFisicoController {
             @RequestBody ExercicioFIsicoRequestDTO requestDTO) {
         return service.criar(requestDTO);
     }
+
+    @PatchMapping("/{id}/aprovar")
+    public ResponseEntity<ExercicoFisicoResponseDTO> aprovar(
+            @PathVariable Long id) {
+
+        ExercicoFisicoResponseDTO exercicio =
+                service.aprovar(id);
+
+        return ResponseEntity.ok(exercicio);
+    }
 }
